@@ -37,6 +37,7 @@ private:
 
   // previous timestamp
   long long previous_timestamp_;
+  int noise_ax, noise_ay;
 
   // tool object used to compute Jacobian and RMSE
   Tools tools;

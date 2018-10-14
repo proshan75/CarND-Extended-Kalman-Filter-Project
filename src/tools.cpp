@@ -60,16 +60,11 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
     float vx = x_state(2);
     float vy = x_state(3);
 
-    if (px == 0.0 || py == 0.0 || vx == 0.0 || vy == 0.0)
-    {
-        cout << "Input value is zero";
-        return Hj;
-    }
-
     float px2_plus_py2 = px * px + py * py;
-    if (px2_plus_py2 == 0.0)
+    //check division by zero
+    if (fabs(px2_plus_py2) < 0.0001)
     {
-        cout << "px2_plus_py2 is zero";
+        cout << "px2_plus_py2 is zero" << endl;
         return Hj;
     }
 

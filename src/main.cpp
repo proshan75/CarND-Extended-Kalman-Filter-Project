@@ -106,6 +106,7 @@ int main()
           ground_truth.push_back(gt_values);
           
           //Call ProcessMeasurment(meas_package) for Kalman filter
+          cout << "Sending package of type: " << meas_package.sensor_type_ << " measurements: " << meas_package.raw_measurements_ << " timestamp: " << meas_package.timestamp_ << endl;
           fusionEKF.ProcessMeasurement(meas_package);    	  
 
           //Push the current estimated x,y positon from the Kalman filter's state vector

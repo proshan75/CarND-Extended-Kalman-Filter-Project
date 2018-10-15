@@ -29,17 +29,19 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
     //accumulate squared residuals
     int size = estimations.size();
     VectorXd residual(4), squared_residual(4), total_residual(4);
+    residual << 0, 0, 0, 0;
+    squared_residual << 0, 0, 0, 0;
     total_residual << 0, 0, 0, 0;
     for (int i = 0; i < size; ++i) {
         // ... your code here
         residual = estimations[i] - ground_truth[i];
         squared_residual = (residual.array() * residual.array());
-        total_residual += squared_residual;
+        total_residual = total_residual + squared_residual;
     }
 
     //calculate the mean
     // ... your code here
-    VectorXd mean_residual = total_residual / 1.0 * size;
+    VectorXd mean_residual = total_residual / (1.0 * size);
 
     //calculate the squared root
     // ... your code here

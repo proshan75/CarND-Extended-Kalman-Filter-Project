@@ -34,12 +34,12 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
         // ... your code here
         residual = estimations[i] - ground_truth[i];
         squared_residual = (residual.array() * residual.array());
-        total_residual = total_residual + squared_residual;
+        total_residual += squared_residual;
     }
 
     //calculate the mean
     // ... your code here
-    VectorXd mean_residual = total_residual / size;
+    VectorXd mean_residual = total_residual / 1.0 * size;
 
     //calculate the squared root
     // ... your code here
